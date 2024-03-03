@@ -5,10 +5,19 @@
   flex-direction: column;
   justify-content:flex-start; /* Center items vertically */
   align-items: center; /* Center items horizontally */
-  background-image: url('/root/resources/home.jpg');
-  background-size: cover;
+  /* background-image: url('/root/resources/home.jpg');
+  background-size: cover; */
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
 }
 
 h1 {
@@ -16,17 +25,18 @@ h1 {
   font-family: "Poppins", sans-serif;
   font-size: 8rem;
   font-weight: 600;
-  -webkit-text-stroke: 2px rgb(50, 76, 82);
-  color: transparent;
+  -webkit-text-stroke: 2px rgb(34,22,22);
+  color: rgba(255, 255, 255, 0.12); 
   transition: all 0.5s ease;
   z-index: 5;
   margin-bottom: 20px; /* Adjust as needed */
+  user-select: none;
 }
 
 
 .nav-item {
   align-items: center; /* Center items horizontally */
-  color: #faf6f6;
+  color: rgb(34,22,22);
   font-size: 1rem;
   font-weight: 500;
   line-height: 25px;
