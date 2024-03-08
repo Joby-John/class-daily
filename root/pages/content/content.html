@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" class="html">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Daily - Content</title>
+    <link rel="stylesheet" type="text/css" href="content.css">
+</head>
+
+<body class="body">
+    <h1>Class Today</h1>
+    <div id="content">
+        <!-- Content will be dynamically loaded here -->
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Get the type parameter from the URL
+        var type = getParameterByName('type');
+        var content = '';
+
+        // Dynamically load content based on the type parameter
+        if (type === 'mcas1') {
+            content = '<h1>MCA S1 Content</h1><p>This is the content for MCA S1.</p>';
+        } else if (type === 'mcas2') {
+            content = '<h1>MCA S2 Content</h1><p>This is the content for MCA S2.</p>';
+        } else if (type === 'mcas3') {
+            content = '<h1>MCA S3 Content</h1><p>This is the content for MCA S3.</p>';
+        } else {
+            content = '<h1>No content available.</h1>';
+        }
+
+        // Set the fetched content to the content div
+        document.getElementById('content').innerHTML = content;
+    </script>
+</body>
+</html>
