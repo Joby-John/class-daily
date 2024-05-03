@@ -13,8 +13,8 @@ const calendar = document.querySelector(".calendar"),
   addEventWrapper = document.querySelector(".add-event-wrapper "),
   addEventCloseBtn = document.querySelector(".close "),
   addEventTitle = document.querySelector(".event-name "),
-  addEventFrom = document.querySelector(".event-time-from "),
-  addEventTo = document.querySelector(".event-time-to "),
+  addEventModule = document.querySelector(".event-module "),
+  addEventDetails = document.querySelector(".event-details "),
   addEventSubmit = document.querySelector(".add-event-btn ");
 
 let today = new Date();
@@ -248,14 +248,22 @@ function updateEvents(date) {
     ) {
       event.events.forEach((event) => {
         events += `<div class="event">
-            <div class="title">
-              <i class="fas fa-circle"></i>
-              <h3 class="event-title">${event.title}</h3>
-            </div>
+          <div class="title">
+             <i class="fas fa-circle"></i>
+             <h3 class="event-title">${event.title}</h3>  <i class="fas fa-chevron-down dropdown-icon"></i>
+          </div>
+          <div class="event-details">  
+             <p class="event-module">Module: ${event.module}</p>
+             <p class="event-details ">Details: ${event.details}</p>
+          </div>
         </div>`;
+
       });
     }
   });
+
+
+  
   if (events === "") {
     events = `<div class="no-event">
             <h3>No Events</h3>
@@ -264,6 +272,7 @@ function updateEvents(date) {
   eventsContainer.innerHTML = events;
   saveEvents();
 }
+
 
 //function to add event
 addEventBtn.addEventListener("click", () => {
@@ -280,10 +289,16 @@ document.addEventListener("click", (e) => {
   }
 });
 
-//allow 500 chars in eventtitle
+//allow 70 chars in eventtitle
 addEventTitle.addEventListener("input", (e) => {
-  addEventTitle.value = addEventTitle.value.slice(0, 500);
+  addEventTitle.value = addEventTitle.value.slice(0, 70);
 });
+addEventModule.addEventListener("input", (e) =>{
+  addEventModule.value = addEventModule.value.slice(0,70);
+})
+addEventDetails.addEventListener("input", (e) =>{
+  addEventDetails.value = addEventDetails.value.slice(0,70);
+})
 
 // function defineProperty() {
 //   var osccred = document.createElement("div");
@@ -306,32 +321,26 @@ addEventTitle.addEventListener("input", (e) => {
 //defineProperty();
 
 //allow only time in eventtime from and to
-// addEventFrom.addEventListener("input", (e) => {
-//   addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
-//   if (addEventFrom.value.length === 2) {
-//     addEventFrom.value += ":";
-//   }
-//   if (addEventFrom.value.length > 5) {
-//     addEventFrom.value = addEventFrom.value.slice(0, 5);
-//   }
-// });
+addEventModule.addEventListener("input", (e) => {
+  if (addEventModule.value.length > 70) {
+    addEventModule.value = addEventFrom.value.slice(0, 70);
+  }
+});
 
-// addEventTo.addEventListener("input", (e) => {
-//   addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
-//   if (addEventTo.value.length === 2) {
-//     addEventTo.value += ":";
-//   }
-//   if (addEventTo.value.length > 5) {
-//     addEventTo.value = addEventTo.value.slice(0, 5);
-//   }
-// });
+addEventDetails.addEventListener("input", (e) => {
+  if (addEventDetails.value.length > 70) {
+    addEventDetails.value = addEventDetails.value.slice(0, 70);
+  }
+});
 
 //function to add event to eventsArr
 addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
+  const module  = addEventModule.value;
+  const details = addEventDetails.value;
   // const eventTimeFrom = addEventFrom.value;
   // const eventTimeTo = addEventTo.value;
-  if (eventTitle === "") {
+  if (eventTitle === ""|| module === ""||details === "") {
     alert("Please fill all the fields");
     return;
   }
@@ -376,6 +385,8 @@ addEventSubmit.addEventListener("click", () => {
   const newEvent = {
     title: eventTitle,
     // time: timeFrom + " - " + timeTo,
+    module: module,
+    details: details
   };
   console.log(newEvent);
   console.log(activeDay);
@@ -405,6 +416,8 @@ addEventSubmit.addEventListener("click", () => {
   console.log(eventsArr);
   addEventWrapper.classList.remove("active");
   addEventTitle.value = "";
+  addEventModule.value = "";
+  addEventDetails.value = "";
   // addEventFrom.value = "";
   // addEventTo.value = "";
   updateEvents(activeDay);
