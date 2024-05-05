@@ -8,14 +8,21 @@ if($_SERVER ["REQUEST_METHOD"] == "POST"){
     try {
         require_once "dbhInc.php";
 
-        $query = "INSERT INTO admins (email, pwd, department) VALUES(?, ?, ?);";
+        $query = "INSERT INTO admins (email, pwd, department) VALUES(:email, :pwd, :department);";
         $stmnt = $pdo->prepare($query);
-        $stmnt->execute([$email, $pwd, $department]);
+
+        $stmnt->bindParam(":email", $email);
+        $stmnt->bindParam(":pwd", $pwd);
+        $stmnt->bindParam(":department", $department);
+    
+
+        $stmnt->execute();
         $pdo = null;
         $stmnt = null;
          
+        header("Location: ../pages/signUp/signUp.php");
         die();
-        header("Location: ../pages/signUp/signUp.html");
+        
 
     } catch (PDOException $e) {
         die("Query failed".$e->getMessage());

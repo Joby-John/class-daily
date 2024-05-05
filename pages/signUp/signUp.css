@@ -7,12 +7,22 @@
     padding: 20px;
     border-radius: 20px;
     position: relative;
-    right: 60%;
+    right:43%;
+  }
+  .deleteform{
+    gap: 20px;
+    width: 330px;
+    height:400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    position: absolute;
+    left:70%;
   }
   #table{
     position: relative;
-    left:10%;
-    bottom: 15%;
+    right:30%;
+    bottom:15%
   }
   
   .title {
@@ -117,6 +127,19 @@
     color: #fff;
     font-size: 16px;
     transform: .3s ease;
+  }
+  
+  .delete{
+    border: none;
+    outline: none;
+    background-color: royalblue;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+    position: relative;
+    top:43%;
   }
   
   .submit:hover {

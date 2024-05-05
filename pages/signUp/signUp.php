@@ -14,7 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url('/root/resources/log_Sign.jpg');
+            background-image: url('../../resources/log_Sign.jpg');
         }
 
         .content {
@@ -29,17 +29,7 @@
     <form class="form" action="../../includes/signupInc.php" method="POST">
         <p class="title">Add an admin </p>
         <p class="message">Use the academic email </p>
-        <!-- <div class="flex">
-            <label>
-                <input required="" placeholder="" type="text" class="input">
-                <span>Firstname</span>
-            </label>
-
-            <label>
-                <input required="" placeholder="" type="text" class="input">
-                <span>Lastname</span>
-            </label>
-        </div> -->
+        
 
         <div class="flex">
         <label>
@@ -70,30 +60,35 @@
     <table class="table table-success table-striped-columns hover justify-content-center">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>City</th>
+            <th>E-mail</th>
+            <th>Department</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Alice</td>
-            <td>30</td>
-            <td>New York</td>
-          </tr>
-          <tr>
-            <td>Bob</td>
-            <td>25</td>
-            <td>London</td>
-          </tr>
-          <tr>
-            <td>Charlie</td>
-            <td>40</td>
-            <td>Paris</td>
-          </tr>
+
+          
         </tbody>
       </table>
     </div>
+
+    <form class="deleteform" action="../../includes/deleteInc.php" method="POST">
+        <p class="title">Delete an admin </p>
+        <p class="message">Use the academic email </p>
+        
+
+        <div class="flex">
+        
+        <label>
+            <input required="" placeholder="" type="email" class="input" name="email">
+            <span>Email</span>
+        </label>
+    </div>
+
+        <button class="delete">Delete Admin</button>
+        <!-- <p class="signin">Already have an acount ? <a href="/root/pages/login/login.html">Signin</a> </p> -->
+    </form>
+
+    
       
 </body>
 
