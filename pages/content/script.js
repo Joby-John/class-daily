@@ -266,7 +266,7 @@ function updateEvents(date) {
   
   if (events === "") {
     events = `<div class="no-event">
-            <h3>No Events</h3>
+            <h3>No Reminders</h3>
         </div>`;
   }
   eventsContainer.innerHTML = events;
@@ -338,12 +338,27 @@ addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
   const module  = addEventModule.value;
   const details = addEventDetails.value;
+  const eventData = {
+    "title": eventTitle,
+    "module": module,
+    "details": details,
+  }
   // const eventTimeFrom = addEventFrom.value;
   // const eventTimeTo = addEventTo.value;
   if (eventTitle === ""|| module === ""||details === "") {
     alert("Please fill all the fields");
     return;
   }
+  else{
+    fetch("events.php",{
+    "method":"POST",
+    "headers":{
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body":JSON.stringify(eventData)
+  })
+  }
+  
 
   //check correct time format 24 hour
   // const timeFromArr = eventTimeFrom.split(":");
@@ -414,6 +429,7 @@ addEventSubmit.addEventListener("click", () => {
   }
 
   console.log(eventsArr);
+
   addEventWrapper.classList.remove("active");
   addEventTitle.value = "";
   addEventModule.value = "";

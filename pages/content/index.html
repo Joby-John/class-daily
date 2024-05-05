@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta
       name="description"
       content="Stay organized with our user-friendly Calendar featuring events, reminders, and a customizable interface. Built with HTML, CSS, and JavaScript. Start scheduling today!"
@@ -63,22 +64,23 @@
           </div>
           <div class="add-event-body">
             <div class="add-event-input">
-              <input type="text" placeholder="Enter The Title" class="event-name" />
+              <input type="text" placeholder="Enter The Title" class="event-name" name="title"/>
             </div>
             <div class="add-event-input">
               <input
                 type="text"
                 placeholder="Module Number"
-                class="event-module"
+                class="event-module" name="module"
               />
             </div>
             <div class="add-event-input">
               <input
                 type="text"
                 placeholder="Details"
-                class="event-details"
+                class="event-details" name="details"
               />
             </div>
+
           </div>
           <div class="add-event-footer">
             <button class="add-event-btn">Add Reminder</button>
