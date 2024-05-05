@@ -7,6 +7,12 @@
     padding: 20px;
     border-radius: 20px;
     position: relative;
+    right: 60%;
+  }
+  #table{
+    position: relative;
+    left:10%;
+    bottom: 15%;
   }
   
   .title {
