@@ -334,30 +334,43 @@ addEventDetails.addEventListener("input", (e) => {
 });
 
 //function to add event to eventsArr
-addEventSubmit.addEventListener("click", () => {
+addEventSubmit.addEventListener("click", async() => {
   const eventTitle = addEventTitle.value;
   const module  = addEventModule.value;
   const details = addEventDetails.value;
-  const eventData = {
-    "title": eventTitle,
-    "module": module,
-    "details": details,
-  }
+
+  let Title = addEventTitle.value;
+  let Module = addEventModule.value;
+  let Details = addEventDetails.value;
   // const eventTimeFrom = addEventFrom.value;
   // const eventTimeTo = addEventTo.value;
   if (eventTitle === ""|| module === ""||details === "") {
     alert("Please fill all the fields");
     return;
   }
-  else{
-    fetch("events.php",{
-    "method":"POST",
-    "headers":{
-      "Content-Type": "application/json; charset=utf-8"
-    },
-    "body":JSON.stringify(eventData)
-  })
-  }
+  
+  $.ajax({
+    url:"events.php",
+    type:"POST",
+    dataType: 'json',
+    data: {title:Title,module:Module,details:Details},
+    success:function(response){
+      $('#event_entry_modal').modal('hide');  
+      if(response.status == true)
+      {
+     alert(response.msg);
+     location.reload();
+      }
+      else
+      {
+      alert(response.msg);
+      }
+     },
+     error: function (xhr, status) {
+     console.log('ajax error = ' + xhr.statusText);
+     alert(response.msg);
+     }
+   });  
   
 
   //check correct time format 24 hour
