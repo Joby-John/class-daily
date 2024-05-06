@@ -56,20 +56,6 @@
     </form>
 
 
-    <div class="d-flex" id="table">
-    <table class="table table-success table-striped-columns hover justify-content-center">
-        <thead>
-          <tr>
-            <th>E-mail</th>
-            <th>Department</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          
-        </tbody>
-      </table>
-    </div>
 
     <form class="deleteform" action="../../includes/deleteInc.php" method="POST">
         <p class="title">Delete an admin </p>
@@ -87,6 +73,39 @@
         <button class="delete">Delete Admin</button>
         <!-- <p class="signin">Already have an acount ? <a href="/root/pages/login/login.html">Signin</a> </p> -->
     </form>
+
+    <div class="d-flex" id="table">
+    <table class="table table-success table-striped-columns hover justify-content-center">
+        <thead>
+          
+        </thead>
+        <tbody>
+        <tr>
+            <td>E-mail</td>
+            <td>Department</td>
+          </tr>
+        <?php
+                include '../../includes/adminfetch.php';  // Include your data fetching script
+
+                
+          
+                if (empty($results)) {
+                  echo "<tr><td colspan='3'>No data found</td></tr>";
+              } else {
+                foreach($results as $row) {  // Loop through results array
+                  echo "<tr>";
+                  echo "<th>E-mail</th>
+                  <th>Department</th>";
+      
+                  echo "</tr>";
+              }
+              }
+                ?> 
+
+          
+        </tbody>
+      </table>
+    </div>
 
     
       

@@ -6,6 +6,8 @@ try {
     $stmnt = $pdo->prepare($query);
     $stmnt->execute();
     $results = $stmnt->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($results);
+
     die();
 } catch (PDOException $e) {
     

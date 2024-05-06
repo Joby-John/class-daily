@@ -7,6 +7,7 @@ if($_SERVER ["REQUEST_METHOD"] == "POST"){
 
     try {
         require_once "dbhInc.php";
+        header("Location: ../index.php");
     } catch (PDOException $e) {
         die("Query failed".$e->getMessage());
     }
@@ -14,5 +15,5 @@ if($_SERVER ["REQUEST_METHOD"] == "POST"){
 
 }
 else{
-    header("Location: ../index.html");
+    header("Location: ../index.php");
 }
