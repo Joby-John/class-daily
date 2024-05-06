@@ -85,7 +85,7 @@
             <td>Department</td>
           </tr>
         <?php
-                include '../../includes/adminfetch.php';  // Include your data fetching script
+                include '../../includes/adminfetch.php';  // Include data fetching script
 
                 
           
